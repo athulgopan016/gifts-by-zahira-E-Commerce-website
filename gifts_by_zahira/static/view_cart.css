@@ -1,0 +1,27 @@
+/* yourapp/templates/yourapp/styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+p {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Add more styles as needed for your specific design */

@@ -1,0 +1,78 @@
+<!-- Styling for the Gifts by Zahira Welcome Page -->
+<style>
+    body {
+        display: flex;
+        
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+
+    h1, p {
+        text-align: center;
+        color: #181515;
+    }
+
+    img {
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<!-- Gifts by Zahira HTML -->
+<img src="https://scontent.fcok20-1.fna.fbcdn.net/v/t39.30808-6/424835504_1379513199214757_882747513554143573_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=3635dc&_nc_ohc=qLM7BB6BD1QAX9wwljG&_nc_ht=scontent.fcok20-1.fna&oh=00_AfArS1zTPOXgZG5NKMzaPqBbVnkevwz5S7S85smw1smREw&oe=65BEA14D" height="200" width="200" alt="zahira logo"/>
+<h1>Welcome to Gifts by Zahira</h1>
+<p>Explore our wide range of customized handmade gift items!</p>
+</body>
+</html>
+
+<!-- Styling for the LOG OUT Page -->
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #e6f7ff;
+    }
+
+    p {
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<!-- LOG OUT HTML -->
+{% if user.is_authenticated %}
+    <p>Welcome, {{ request.user.username }}. Thanks for logging in.</p>
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+{% endif %}
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <input type="submit" value="Logout">
+</form>
+</body>
+</html>

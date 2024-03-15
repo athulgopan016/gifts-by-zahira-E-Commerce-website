@@ -1,0 +1,50 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'customers2.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+</head>
+<body style="background-color: coral;">
+
+    
+    <div style="text-align: left;">
+        <button style="font-family:fantasy; background-color: rgb(47, 152, 190);" onclick="window.location.href='{% url 'zahira_products:view_cart' %}'">back</button>
+    </div>
+    <h1 style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Order Summary</h1>
+
+    
+    
+    <form method="post" action="{% url 'zahira_products:place_order' %}">
+        {% csrf_token %}
+        <label style="font-family: fantasy;" for="address" >Please provide your Address:</label>
+        <textarea id="address" name="address" rows="4" cols="50" required></textarea><br>
+        <!-- Payment mode dropdown -->
+        <label style="font-family: fantasy;" for="payment_mode">Select mode of payment:</label>
+        <select id="payment_mode" name="payment_mode" required>
+            <option value="cash on delivery">cash on delivery</option>
+            <option value="Google Pay">Google Pay</option>
+            <option value="Paytm">Paytm</option>
+            <option value="Upi ID">Upi ID</option>
+            <option value="credit_card">Credit Card</option>
+            <option value="phonpe">Phonepe</option>
+            <!-- Add more options as needed -->
+        </select><br>
+      
+        <div style="text-align: right;">
+            
+            <button style="font-family: fantasy; background-color: rgb(47, 152, 190);" type="submit">Place Order</button>
+        </div>
+    </form>
+    
+    <h5 style="text-align: center;font-family:cursive;color: aliceblue;">Thank you and explore us again later</h5>
+    
+  
+    
+   
+</body>
+</html>

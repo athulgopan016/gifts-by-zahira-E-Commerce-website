@@ -1,0 +1,134 @@
+/* styles.css */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN PAGE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: hsl(0, 10%, 80%);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .main_div {
+            background-color: hsl(0, 10%, 80%);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .input_box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 10px;
+            color: #555;
+        }
+
+        .button {
+            margin-top: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .option_div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .check_box {
+            display: flex;
+            align-items: center;
+        }
+
+        .check_box input {
+            margin-right: 5px;
+        }
+
+        .forget_div a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .sign_up a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="main_div">
+        <div class="title">Login Form</div>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="input_box">
+                <input type="text" name="username" placeholder="Username" required/>
+                <div class="icon"><i class="fas fa-user"></i></div>
+            </div>
+            <div class="input_box">
+                <input type="password" name="password" placeholder="Password" required>
+                <div class="icon"><i class="fas fa-lock"></i></div>
+            </div>
+            <div class="option_div">
+                <div class="check_box">
+                    <input type="checkbox" name="remember_me">
+                    <span>Remember me</span>
+                </div>
+                <div class="forget_div">
+                    <a href="{% url 'password_reset' %}">Forgot password?</a>
+                </div>
+            </div>
+            <div class="input_box button">
+                <input type="submit" value="Login">
+            </div>
+            <div class="sign_up">
+                Not a member? <a href="{% url 'signup' %}">Signup now</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

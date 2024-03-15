@@ -1,0 +1,57 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'welcome.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifts by Zahira</title>
+    <style>
+        body {
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <img src="https://scontent.fcok20-1.fna.fbcdn.net/v/t39.30808-6/424835504_1379513199214757_882747513554143573_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=3635dc&_nc_ohc=Jxu8PM2-vIIAX_QsaMH&_nc_ht=scontent.fcok20-1.fna&oh=00_AfAQH0nSakWv85kVZiTumC64o-Vaddf0LyJb0hNcaFmZ3w&oe=65DE454D" height="200" width="200" alt="zahira logo"/>
+    <h1>Welcome to Gifts by Zahira</h1>
+    <p>Explore our wide range of customized handmade gift items!</p>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOG OUT</title>
+</head>
+
+<body style="background-color:darksalmon;">
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ request.user.username }}. Thanks for logging in.</p>
+    {% else %}
+    <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Welcome, new user. Please log in.</p>
+    {% endif %}
+    <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <a href="products.html" style="text-decoration: none; color: inherit;">
+            Explore our items
+        </a>
+    </button>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+    </form>
+</body>
+</html>

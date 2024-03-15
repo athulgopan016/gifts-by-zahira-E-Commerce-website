@@ -1,0 +1,65 @@
+{% load static %}
+<!-- In your HTML template -->
+
+<link rel="stylesheet" href="{% static 'view_cart2.css' %}">
+<head> <!-- view_cart.html -->
+    <script src="{% static 'view_cart.js' %}"></script>
+    </head>
+<body style="background-color: darksalmon;">
+
+{% block content %}
+<div style="text-align: left;">
+    <button style="font-family:fantasy; background-color: rgb(48, 165, 194);" onclick="window.location.href='{% url 'zahira_products:product_list' %}'">back</button>
+</div>
+
+<h2 style="text-align: center; font-family: fantasy; color: rgb(204, 28, 78);">Your Shopping Cart</h2>
+
+{% if cart_items %}
+    <div class="product-cards">
+        {% for item in cart_items %}
+            <div class="product-card">
+                <img src="{{ item.image_url }}" alt="{{ item.name }}">
+                <div class="product-details">
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.quantity }} x {{ item.price }}</p>
+                    <p>{{ item.product_description }}</p>
+                    <form id="removeForm" method="post"  action="{% if item.product.id %}{% url 'zahira_products:remove_from_cart' item.product.id %}{% endif %}">
+                        {% csrf_token %}
+                        <button type="submit" onclick="removeFromCart()">Remove from cart</button>
+                    </form>
+                    
+
+            
+                    
+                    <script>
+                        function removeFromCart() {
+                            // Get the form element
+                            var form = document.getElementById('removeForm');
+                    
+                            // Submit the form
+                            form.submit();
+                        }
+                    </script>
+                    
+                    
+                    
+                    
+
+                </div>
+                
+                
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <p>Total Price: {{ total_price }}</p>
+    <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: crimson;">for any product,shipping charge must be free</h4>
+    <div style="text-align: right;">
+        <button style="font-family:fantasy; background-color: rgb(69, 169, 191);" onclick="window.location.href='{% url 'zahira_products:customers' %}'">proceed to buy</button>
+    </div>
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}
+</body>
